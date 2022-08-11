@@ -7,6 +7,9 @@ set -e
 # will be honored
 /usr/local/bin/docker-entrypoint.sh rabbitmq-server -detached
 
+# https://github.com/pardahlman/docker-rabbitmq-cluster/issues/7#issuecomment-1096668352
+sleep 10s
+
 # Do the cluster dance
 rabbitmqctl stop_app
 rabbitmqctl join_cluster rabbit@rabbitmq1
